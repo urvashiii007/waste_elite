@@ -1,6 +1,9 @@
+require("dotenv").config();
+
 module.exports = {
-    MONGOURI: "mongodb+srv://trisha:q0JExogtN1cTpXfj@cluster0-jdavb.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    JWT_SECRET: "edrdctgyhjhnkijpo",
-    SENDGRID_API: "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",
-    EMAIL: "http:localhost:3000"
-}
+  MONGOURI: process.env.MONGODB_URI,
+  JWT_SECRET: process.env.JWT_SECRET,
+  SENDGRID_API: process.env.SENDGRID_API,
+  EMAIL: process.env.EMAIL,
+  PORT: process.env.PORT || 5000
+};
