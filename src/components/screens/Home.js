@@ -1,4 +1,4 @@
-
+/*
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../../App'
 import M from 'materialize-css'
@@ -490,3 +490,360 @@ const Home = () => {
 }
 export default Home
 
+*/
+
+
+// src/components/screens/Home.js
+
+// src/components/screens/Home.js
+import React, { useEffect, useContext, useState } from 'react';
+import { UserContext } from '../../App';
+import M from 'materialize-css';
+import { Col, FormGroup, Label, Input } from 'reactstrap';
+
+const Home = () => {
+  const [text, setText] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const { state } = useContext(UserContext);
+
+  // Parallax only (no slider)
+  useEffect(() => {
+    const parallaxElems = document.querySelectorAll('.parallax');
+    const parallaxInst = M.Parallax.init(parallaxElems);
+    return () => {
+      if (parallaxInst && Array.isArray(parallaxInst)) {
+        parallaxInst.forEach(i => i && typeof i.destroy === 'function' && i.destroy());
+      } else if (parallaxInst && typeof parallaxInst.destroy === 'function') {
+        parallaxInst.destroy();
+      }
+    };
+  }, []);
+
+  const PostData = (e) => {
+    if (e && typeof e.preventDefault === "function") e.preventDefault();
+    const emailOk = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    if (!emailOk) {
+      M.toast({ html: "Invalid email", classes: "#c62828 red darken-3" });
+      return;
+    }
+    fetch("/", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, text })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) M.toast({ html: data.error, classes: "#c62828 red darken-3" });
+        else M.toast({ html: data.message, classes: "#43a047 green darken-1" });
+      })
+      .catch(err => console.log(err));
+  };
+
+  return (
+    <div className="home-root">
+      {/* ===== Hero: Full-width Video + Single Quote ===== */}
+      <section className="hero-video-wrap">
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={process.env.PUBLIC_URL + "/images/wallpaper-fallback.jpg"}
+        >
+          <source src={process.env.PUBLIC_URL + "/vdo/vdo1.mp4"} type="video/mp4" />
+        </video>
+        <div className="hero-overlay" />
+        <div className="hero-caption glass">
+          <h1>There is no such thing as “Away”.</h1>
+          <p>When we throw anything away, it must go somewhere.</p>
+        </div>
+      </section>
+
+      {/* ===== Services (images only) ===== */}
+      <section className="section container-xxl py-5">
+        <h1 className="section-title">Our Services</h1>
+
+        <div className="services-grid">
+          {/* Card 1: Collection */}
+          <div className="service-card">
+            <div className="card-body">
+              <div className="card-head">
+                                <img className="card-icon" src={process.env.PUBLIC_URL + "/images/collect.png"} alt="Collection icon" />
+                <h3 className="text-green card-title">Collection</h3>
+              </div>
+              <p>Reliable trash and recycling pickup services for daily waste.</p>
+              <p>We collect directly from your home at no cost.</p>
+            </div>
+          </div>
+
+          {/* Card 2: Transportation */}
+          <div className="service-card">
+
+            <div className="card-body">
+              <div className="card-head">
+                <img className="card-icon" src={process.env.PUBLIC_URL + "/images/truck.png"} alt="Transport icon" />
+                <h3 className="text-green card-title">Transportation</h3>
+              </div>
+              <p>Collected waste is transported to recycling facilities.</p>
+              <p>They recycle the waste using proper techniques.</p>
+            </div>
+          </div>
+
+          {/* Card 3: Biogas */}
+          <div className="service-card">
+
+            <div className="card-body">
+              <div className="card-head">
+                <img className="card-icon" src={process.env.PUBLIC_URL + "/images/bio.png"} alt="Biogas icon" />
+                <h3 className="text-green card-title">Biogas Plant Set-Up</h3>
+              </div>
+              <p>“The machine that converts your waste into clean energy!”</p>
+              <p>Produces cooking gas and fertilizer via natural breakdown.</p>
+            </div>
+          </div>
+        </div>
+
+{/* YouTube info video */}
+<div className="media-wrap">
+  <div className="card z-depth-1">
+    <div className="card-image ratio-16x9">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/La6yXYwVq3A?rel=0&modestbranding=1"
+        title="Biogas video"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>
+
+      </section>
+
+      {/* ===== Parallax 1 ===== */}
+      <div className="parallax-container">
+        <div className="parallax">
+          <img src={process.env.PUBLIC_URL + "/images/collection.jpeg"} alt="collection" />
+        </div>
+      </div>
+
+      {/* ===== About ===== */}
+      <section className="section about2 py-5">
+        <h2 className="section-title">ABOUT US</h2>
+        <div className="about-grid">
+          <div className="about-text">
+            <p>WasteElite is a leading provider of eco-friendly and dependable door-to-door collection services across Delhi/NCR.</p>
+            <p>We reach the grass-root level to tackle waste problems and provide superior services for convenience.</p>
+            <p>From kitchen waste to household, horticulture and construction waste — we handle it the eco-friendly way.</p>
+          </div>
+          <div className="about-logo">
+            <div className="about-logo-circle">
+              <img src={require("../../logo4.png")} alt="logo" />
+            </div>
+          </div>
+        </div>
+
+        <h1 className="about-quote">
+          “Eliminate the concept of Waste —<br />
+          not reduce, minimize or avoid waste…<br />
+          but eliminate the very concept by Design.”
+        </h1>
+      </section>
+
+      {/* ===== Parallax 2 ===== */}
+      <div className="parallax-container">
+        <div className="parallax">
+          <img src={process.env.PUBLIC_URL + "/images/modi.jpeg"} alt="parallax-2" />
+        </div>
+      </div>
+
+      {/* ===== Team ===== */}
+      <section className="section container-xxl py-5">
+        <h2 className="section-title">Our Team</h2>
+        <div className="cards-grid">
+          <div className="card hoverable">
+            <div className="card-image avatar-wrap">
+              <img className="avatar" src={process.env.PUBLIC_URL + "/images/sachi1.jpeg"} alt="Sachi" />
+            </div>
+            <div className="card-content">
+              <h3 className="card-title center">Sachi Saraswat</h3>
+              <h5 className="center">EVP & COO</h5>
+              <p>Oversees field operations, collections, disposal and landfills at Waste Elite.</p>
+            </div>
+          </div>
+
+          <div className="card hoverable">
+            <div className="card-image avatar-wrap">
+              <img className="avatar" src={process.env.PUBLIC_URL + "/images/trisha1.jpg"} alt="Trisha" />
+            </div>
+            <div className="card-content">
+              <h3 className="card-title center">Trisha Sahu</h3>
+              <h5 className="center">President & CEO</h5>
+              <p>President, CEO and board member leading Waste Elite’s vision and execution.</p>
+            </div>
+          </div>
+
+          <div className="card hoverable">
+            <div className="card-image avatar-wrap">
+              <img className="avatar" src={process.env.PUBLIC_URL + "/images/varsha.jpeg"} alt="Varsha" />
+            </div>
+            <div className="card-content">
+              <h3 className="card-title center">Varsha Kumari</h3>
+              <h5 className="center">SVP, Operations</h5>
+              <p>Responsible for oversight of collection, disposal and landfill operations.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Parallax 3 ===== */}
+      <div className="parallax-container">
+        <div className="parallax">
+          <img src={process.env.PUBLIC_URL + "/images/water.jpg"} alt="parallax-3" />
+        </div>
+      </div>
+
+      {/* ===== Supporting Companies ===== */}
+      <section className="section container-xxl py-5">
+        <h2 className="section-title">Our Supporting Companies</h2>
+        <div className="logos-grid">
+          <img src={process.env.PUBLIC_URL + "/images/shayna.jpg"} alt="shayna" />
+          <img src={process.env.PUBLIC_URL + "/images/greenotech.jpg"} alt="greenotech" />
+          <img src={process.env.PUBLIC_URL + "/images/vanshika.png"} alt="vanshika" />
+          <img src={process.env.PUBLIC_URL + "/images/atterologo.jpg"} alt="attero" />
+        </div>
+      </section>
+
+      {/* ===== Latest News ===== */}
+      <section className="section container-xxl py-5">
+        <h2 className="section-title">Latest News</h2>
+        <div className="cards-grid news-grid">
+          <a className="card hoverable" href="https://timesofindia.indiatimes.com/india/framework-to-make-producers-manage-plastic-waste-is-out/articleshow/76635067.cms">
+            <div className="card-image ratio-4x3">
+              <img src={process.env.PUBLIC_URL + "/images/news1.jpeg"} alt="news1" />
+            </div>
+            <div className="card-content">
+              <p><strong>Framework to make producers manage plastic is out</strong></p>
+              <p>Updated: Jun 26, 2020</p>
+            </div>
+          </a>
+
+          <a className="card hoverable" href="https://www.deccanherald.com/city/top-bengaluru-stories/plastic-waste-pile-up-across-bengaluru-triggers-dengue-spike-fears-853426.html">
+            <div className="card-image ratio-4x3">
+              <img src={process.env.PUBLIC_URL + "/images/news2.jpg"} alt="news2" />
+            </div>
+            <div className="card-content">
+              <p><strong>Plastic waste pile-up triggers dengue spike fears</strong></p>
+              <p>Jun 25, 2020</p>
+            </div>
+          </a>
+
+          <a className="card hoverable" href="https://www.hindustantimes.com/india-news/india-stares-at-biomedical-waste-crisis/story-SpPZrA1tutAAuYhE57p7UI.html">
+            <div className="card-image ratio-4x3">
+              <img src={process.env.PUBLIC_URL + "/images/news3.jpeg"} alt="news3" />
+            </div>
+            <div className="card-content">
+              <p><strong>India stares at biomedical waste crisis</strong></p>
+              <p>Jun 23, 2020</p>
+            </div>
+          </a>
+
+          <a className="card hoverable" href="https://www.cbc.ca/news/canada/thunder-bay/thunder-bay-recycling-expansion-1.5625821">
+            <div className="card-image ratio-4x3">
+              <img src={process.env.PUBLIC_URL + "/images/news4.jpeg"} alt="news4" />
+            </div>
+            <div className="card-content">
+              <p><strong>Thunder Bay expanding recycling program</strong></p>
+              <p>Jun 25, 2020</p>
+            </div>
+          </a>
+
+          <a className="card hoverable" href="https://www.telegraphindia.com/calcutta/no-clearance-of-garbage-of-coronavirus-infected-families/cid/1783758">
+            <div className="card-image ratio-4x3">
+              <img src={process.env.PUBLIC_URL + "/images/news5.jpeg"} alt="news5" />
+            </div>
+            <div className="card-content">
+              <p><strong>No clearance of garbage of infected families</strong></p>
+              <p>Jun 26, 2020</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      {/* ===== Suggestions + Map ===== */}
+      <section className="section container-xxl py-5">
+        <h2 className="section-title">Give your suggestions</h2>
+        <div className="suggest-grid">
+          <form className="card hoverable p-4" onSubmit={PostData}>
+            <div className="row">
+              <div className="input-field col s12 m6">
+                <i className="material-icons prefix" style={{ color: "#1b5e20" }}>account_circle</i>
+                <input
+                  id="name"
+                  type="text"
+                  className="validate"
+                  placeholder="Full Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <label htmlFor="name" style={{ color: "#1b5e20" }}>Your Name</label>
+              </div>
+              <div className="input-field col s12 m6">
+                <i className="material-icons prefix" style={{ color: "#1b5e20" }}>email</i>
+                <input
+                  id="email"
+                  type="text"
+                  className="validate"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <label htmlFor="email" style={{ color: "#1b5e20" }}>Your Email</label>
+              </div>
+            </div>
+
+            <FormGroup row className="mb-3">
+              <Label for="exampleText" sm={12}>Your Suggestion</Label>
+              <Col sm={12}>
+                <Input
+                  style={{ border: "2px solid #1b5e20", boxShadow: "0 1px 0 0 #1b5e20" }}
+                  type="textarea"
+                  name="text"
+                  id="exampleText"
+                  placeholder="Write Your Suggestion"
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                />
+              </Col>
+            </FormGroup>
+
+            <button
+              className="btn waves-effect waves-light"
+              type="submit"
+              name="action"
+              style={{ color: "white", width: "100%", backgroundColor: "#1b5e20" }}
+            >
+              Submit Your Suggestion
+              <i className="material-icons right" style={{ color: "white" }}>send</i>
+            </button>
+          </form>
+
+          <div className="card hoverable map-card">
+            <div className="card-image ratio-1x1">
+              <iframe
+                title="map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.213158464005!2d75.96860606515054!3d31.518304981370296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391ae3c77ed7b187%3A0x7e1e97621f579c17!2sPanjab%20University%20Swami%20Sarvanand%20Giri%20Regional%20Centre!5e0!3m2!1sen!2sin!4v1593808939392!5m2!1sen!2sin"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;

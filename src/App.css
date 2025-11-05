@@ -1,5 +1,185 @@
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: #f9f9f9;
+/* ========== Global ========== */
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+:root{
+  --brand-green:#1b5e20;
+  --bg-soft:#f1f8f4;   /* new light theme bg */
+  --card-glass: rgba(255,255,255,0.85);
+}
+
+
+*{ box-sizing: border-box; }
+body{
+  margin:0;
+  font-family:'Roboto', sans-serif;
+  background: var(--bg-soft);
+  color:#222;
+}
+
+/* Brand text (used elsewhere) */
+a{ color:black !important; }
+.brand-logo{ font-family:'Grand Hotel', cursive; }
+
+/* Toast placement */
+#toast-container{
+  top:30px !important;
+  right:20px !important;
+  left:auto !important;
+}
+
+/* Layout helpers */
+.section{ position:relative; }
+.container-xxl{ width:min(1200px,92%); margin-inline:auto; }
+.py-5{ padding-top:3rem; padding-bottom:3rem; }
+
+/* Titles */
+.section-title{
+  text-align:center;
+  color:var(--brand-green);
+  font-size:clamp(26px, 2.8vw, 40px);
+  margin:20px auto 28px;
+  font-weight:700;
+}
+
+/* Forms focus (Materialize inputs) */
+.input-field input[type=text]:focus,
+.input-field input[type=password]:focus,
+.input-field input[name="text"]:focus{
+  border-bottom:1px solid var(--brand-green) !important;
+  box-shadow:0 1px 0 0 var(--brand-green) !important;
+}
+
+/* About area bg */
+.about2{ background:#f5faf7 !important; }
+
+/* ======= HERO (Video) ======= */
+.hero-video-wrap{
+  position:relative;
+  margin-top:63px; /* navbar offset */
+  width:100%;
+  height:520px;
+  overflow:hidden;
+  background:#000;
+}
+.hero-video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55));
+  z-index:1;
+}
+.hero-caption{
+  position:absolute; z-index:2;
+  left:50%; top:50%; transform:translate(-50%, -50%);
+  text-align:center; color:#fff;
+  max-width:min(900px, 92vw);
+}
+.glass{
+  display:inline-block;
+  padding:16px 22px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(6px);
+  border-radius:12px;
+}
+.hero-caption h1{ margin:0 0 10px; font-weight:700; line-height:1.2; }
+.hero-caption p{ margin:0; font-size:1.125rem; }
+
+@media (max-width: 992px){ .hero-video-wrap{ height:440px; } }
+@media (max-width: 768px){
+  .hero-video-wrap{ height:360px; }
+  .hero-caption h1{ font-size:1.6rem; }
+  .hero-caption p{ font-size:0.95rem; }
+  .glass{ padding:12px 16px; }
+}
+
+/* ======= Services ======= */
+.services-grid{
+  display:grid; gap:24px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  align-items:start;
+}
+.service-card{
+  display:grid; grid-template-columns:90px 1fr; gap:16px; align-items:center;
+  padding:18px; border-radius:14px;
+  background:var(--card-glass);
+  backdrop-filter:blur(4px);
+}
+.service-card img{ width:90px; height:90px; object-fit:contain; }
+.text-green{ color:var(--brand-green); }
+
+/* ======= Media (YouTube card) ======= */
+.media-wrap{ margin-top:28px; display:grid; place-items:center; }
+.media-wrap .card{ width:min(900px,100%); }
+.ratio-16x9{ position:relative; padding-top:56.25%; }
+.ratio-16x9 > iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+/* ======= About ======= */
+.about-grid{
+  display:grid; grid-template-columns:1.4fr 1fr; gap:24px; align-items:center;
+  width:min(1100px,92%); margin:0 auto;
+}
+.about-text{ font-size:18px; line-height:1.6; }
+.about-logo{ display:grid; place-items:center; }
+.about-logo-circle{
+  width:clamp(180px,28vw,250px); height:clamp(180px,28vw,250px);
+  border-radius:50%; background:var(--brand-green);
+  display:grid; place-items:center; overflow:hidden;
+  box-shadow:0 12px 24px rgba(0,0,0,.18);
+}
+.about-logo-circle img{ width:78%; height:auto; }
+.about-quote{
+  color:var(--brand-green);
+  text-align:center;
+  margin:48px auto 10px;
+  font-size:clamp(22px, 2.4vw, 36px);
+}
+
+/* ======= Cards (Team & News) ======= */
+.cards-grid{ display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+.avatar-wrap{ display:grid; place-items:center; padding-top:18px; }
+.avatar{ width:100px; height:100px; border-radius:50%; object-fit:cover; }
+.card-title{ font-size:22px; margin-bottom:6px; }
+.news-grid a.card{ display:block; color:inherit; }
+
+/* ======= Logos ======= */
+.logos-grid{
+  display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  align-items:center; justify-items:center;
+}
+.logos-grid img{
+  width:min(220px,90%);
+  height:auto;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 6px 16px rgba(0,0,0,.1);
+}
+
+/* ======= Suggestion + Map ======= */
+.suggest-grid{
+  display:grid; gap:20px; grid-template-columns:1.2fr 1fr; align-items:stretch;
+}
+.ratio-1x1{ position:relative; padding-top:100%; }
+.ratio-1x1 > iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+/* ======= Parallax tweaks ======= */
+.parallax-container{ opacity:.97; background:#f7faf7; }
+
+/* ======= Navbar helpers (if used) ======= */
+.navbar-custom{ backdrop-filter:saturate(140%) blur(6px); }
+.navbar-logo{ height:38px; width:auto; }
+@media (min-width:576px){ .navbar-logo{ height:44px; } }
+@media (min-width:768px){ .navbar-logo{ height:48px; } }
+@media (min-width:992px){ .navbar-logo{ height:52px; } }
+.dropdown-menu .dropdown-item a{ width:100%; }
+@media (max-width:767.98px){
+  .navbar-custom .nav-link, .navbar-custom .btn{ width:100%; text-align:left; }
+}
+
+/* ======= Responsive stacks ======= */
+@media (max-width: 992px){
+  .about-grid{ grid-template-columns:1fr; }
+  .suggest-grid{ grid-template-columns:1fr; }
 }

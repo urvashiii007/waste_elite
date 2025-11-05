@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'materialize-css/dist/css/materialize.min.css';
+import './App.css'; // LAST
 
 ReactDOM.render(
   <React.StrictMode>
