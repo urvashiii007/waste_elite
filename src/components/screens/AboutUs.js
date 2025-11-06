@@ -1,3 +1,4 @@
+/*
 import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../../App'
 import { Switch } from 'react-router-dom'
@@ -108,4 +109,67 @@ const AboutUs = () => {
 
 }
 export default AboutUs
+*/
+
+import React from 'react'
+import back2 from '../../back2.jpg'
+import '../../App.css'
+
+const AboutUs = () => {
+
+  return (
+    <div>
+      <div className="about" style={{ backgroundImage: `url(${back2})` }}>
+        <h1 style={{ fontSize: "68px" }}>About Us</h1>
+      </div>
+
+      <div className="about1">
+        <p style={{ fontSize: "18px", fontFamily: "'Roboto', sans-serif" }}>
+          Today, solid waste segregation is the biggest challenge faced by
+          urban areas and metropolitan cities across the world. Especially, in a country like India which
+          has weak environmental regulations, the situation is becoming worse. Satyamev Jayate,
+          the popular TV talk show hosted by Aamir Khan highlighted the seriousness of this issue
+          recently. According to a report from Delhi Development Authority, the city of Delhi alone
+          produces 25,000 tons of waste every day. This waste is dumped in the various locations
+          around the city like Ghazipur, Okhla and Balsawa.<br /><br />
+          Amidst these piles of waste, numerous rag pickers including young children are exposed to
+          severe health hazards. This raises a serious question — *Is there any sustainable solution?*
+        </p>
+
+        <h1 style={{ color: "green", fontSize: "36px", marginTop: "25px" }}>
+          Here We Offer Door to Door Collection of Waste
+        </h1>
+
+        <p style={{ fontSize: "18px", fontFamily: "'Roboto', sans-serif" }}>
+          Waste Elite is one of the leading providers of eco-friendly and dependable
+          Door-to-Door waste collection services across Delhi/NCR. We reach the grassroots level to
+          tackle waste problems and offer complete waste management solutions including collection,
+          transportation, and treatment.<br /><br />
+          Our waste collectors, whom we proudly refer to as ‘Health Officers’, reach your doorstep
+          every day to collect waste and ensure a clean living environment.<br /><br />
+          We also provide solutions for household waste, horticulture waste, and construction waste in
+          the most environment-friendly manner.
+        </p>
+      </div>
+
+      <div style={{ marginBottom: "145px" }}>
+        <img src={process.env.PUBLIC_URL + "/images/intro.png"} className="img-fluid" alt="introduction" />
+      </div>
+
+      <div className="row" style={{ marginBottom: "40px" }}>
+        <div className="col-lg-4 col-xl-4">
+          <img alt="about" src={process.env.PUBLIC_URL + "/images/about2.jpg"} className="img-fluid" />
+        </div>
+        <div className="col-lg-4 col-xl-4">
+          <img alt="about" src={process.env.PUBLIC_URL + "/images/abou3.jpg"} className="img-fluid" />
+        </div>
+        <div className="col-lg-4 col-xl-4">
+          <img alt="about" src={process.env.PUBLIC_URL + "/images/about4.png"} className="img-fluid" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default AboutUs;
 

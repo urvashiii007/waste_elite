@@ -114,7 +114,7 @@ const Biogas = () => {
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div style={{marginRight:"20px",marginTop:"40px"}}>
-            <img style={{width:"100%",height:"380px"}} src={process.env.PUBLIC_URL+"/images/bio1.jpeg"} />
+            
             </div>
             </div>
         </div>
@@ -182,9 +182,13 @@ const Biogas = () => {
               methanogenic microbes.<br/><br/>
               3. Avoid feeding more waste into the biogas plant if the previously generated biogas is not used and is stored
               in the gas holder.<br/>
+              4. Maintain proper moisture content in the feed material as dry material slows digestion and too much water dilutes gas production.<br/><br/>
+  5. Ensure daily mixing or stirring of the slurry to maintain uniform breakdown and avoid floating layers.<br/><br/>
+  6. Keep the digester temperature stable; sudden cold or hot conditions reduce gas yield significantly.<br/><br/>
+  7. Regularly check for gas pipeline leaks and air blockages to maintain safe and efficient biogas flow.<br/>
     
             </p>
-            <img src={process.env.PUBLIC_URL+"/images/bio2.jpeg"} />
+            
           </div>
         </div>
             

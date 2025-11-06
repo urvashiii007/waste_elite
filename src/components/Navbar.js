@@ -291,12 +291,8 @@ const Navbar1 = (props) => {
                 <DropdownItem>
                   <a className="text-success d-block py-1" href="/donation">Donation</a>
                 </DropdownItem>
-                <DropdownItem>
-                  <a className="text-success d-block py-1" href="/company">Our Supporting Companies</a>
-                </DropdownItem>
-                <DropdownItem>
-                  <a className="text-success d-block py-1" href="/certificate">Tree Plantation</a>
-                </DropdownItem>
+
+                
                 <DropdownItem divider />
                 <DropdownItem>
                   <a className="text-success d-block py-1" href="/faqs">FAQs</a>

@@ -562,67 +562,75 @@ const Home = () => {
       </section>
 
       {/* ===== Services (images only) ===== */}
-      <section className="section container-xxl py-5">
-        <h1 className="section-title">Our Services</h1>
+  
+<section className="section container-xxl py-5">
+  <h1 className="section-title">Our Services</h1>
 
-        <div className="services-grid">
-          {/* Card 1: Collection */}
-          <div className="service-card">
-            <div className="card-body">
-              <div className="card-head">
-                                <img className="card-icon" src={process.env.PUBLIC_URL + "/images/collect.png"} alt="Collection icon" />
-                <h3 className="text-green card-title">Collection</h3>
-              </div>
-              <p>Reliable trash and recycling pickup services for daily waste.</p>
-              <p>We collect directly from your home at no cost.</p>
-            </div>
-          </div>
+  <div className="services-grid">
 
-          {/* Card 2: Transportation */}
-          <div className="service-card">
-
-            <div className="card-body">
-              <div className="card-head">
-                <img className="card-icon" src={process.env.PUBLIC_URL + "/images/truck.png"} alt="Transport icon" />
-                <h3 className="text-green card-title">Transportation</h3>
-              </div>
-              <p>Collected waste is transported to recycling facilities.</p>
-              <p>They recycle the waste using proper techniques.</p>
-            </div>
-          </div>
-
-          {/* Card 3: Biogas */}
-          <div className="service-card">
-
-            <div className="card-body">
-              <div className="card-head">
-                <img className="card-icon" src={process.env.PUBLIC_URL + "/images/bio.png"} alt="Biogas icon" />
-                <h3 className="text-green card-title">Biogas Plant Set-Up</h3>
-              </div>
-              <p>“The machine that converts your waste into clean energy!”</p>
-              <p>Produces cooking gas and fertilizer via natural breakdown.</p>
-            </div>
-          </div>
+    {/* Card 1 */}
+    <div className="service-card">
+      <div className="card-body">
+        <div className="card-head">
+          <img className="card-icon" src={process.env.PUBLIC_URL + "/images/collect.png"} alt="Collection icon" />
+          <h3 className="text-green card-title">Waste Collection</h3>
         </div>
 
-{/* YouTube info video */}
-<div className="media-wrap">
-  <div className="card z-depth-1">
-    <div className="card-image ratio-16x9">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/La6yXYwVq3A?rel=0&modestbranding=1"
-        title="Biogas video"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-        loading="lazy"
-      />
+        <ul className="card-points">
+       
+        </ul>
+      </div>
+    </div>
+
+    {/* Card 2 */}
+    <div className="service-card">
+      <div className="card-body">
+        <div className="card-head">
+          <img className="card-icon" src={process.env.PUBLIC_URL + "/images/truck.png"} alt="Transport icon" />
+          <h3 className="text-green card-title">Secure Transportation</h3>
+        </div>
+
+        <ul className="card-points">
+         
+        </ul>
+      </div>
+    </div>
+
+    {/* Card 3 */}
+    <div className="service-card">
+      <div className="card-body">
+        <div className="card-head">
+          <img className="card-icon" src={process.env.PUBLIC_URL + "/images/bio.png"} alt="Biogas icon" />
+          <h3 className="text-green card-title">Biogas Plant Setup</h3>
+        </div>
+
+        <ul className="card-points">
+         
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  {/* YouTube Video */}
+  <div className="media-wrap">
+    <div className="card z-depth-1">
+      <div className="card-image ratio-16x9">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/La6yXYwVq3A?rel=0&modestbranding=1"
+          title="Biogas video"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-      </section>
+
 
       {/* ===== Parallax 1 ===== */}
       <div className="parallax-container">
@@ -662,61 +670,58 @@ const Home = () => {
       </div>
 
       {/* ===== Team ===== */}
-      <section className="section container-xxl py-5">
-        <h2 className="section-title">Our Team</h2>
-        <div className="cards-grid">
-          <div className="card hoverable">
-            <div className="card-image avatar-wrap">
-              <img className="avatar" src={process.env.PUBLIC_URL + "/images/sachi1.jpeg"} alt="Sachi" />
-            </div>
-            <div className="card-content">
-              <h3 className="card-title center">Sachi Saraswat</h3>
-              <h5 className="center">EVP & COO</h5>
-              <p>Oversees field operations, collections, disposal and landfills at Waste Elite.</p>
-            </div>
-          </div>
+<section className="section container-xxl py-5">
+  <h2 className="section-title">Our Waste Management Solutions</h2>
+  <div className="cards-grid">
 
-          <div className="card hoverable">
-            <div className="card-image avatar-wrap">
-              <img className="avatar" src={process.env.PUBLIC_URL + "/images/trisha1.jpg"} alt="Trisha" />
-            </div>
-            <div className="card-content">
-              <h3 className="card-title center">Trisha Sahu</h3>
-              <h5 className="center">President & CEO</h5>
-              <p>President, CEO and board member leading Waste Elite’s vision and execution.</p>
-            </div>
-          </div>
-
-          <div className="card hoverable">
-            <div className="card-image avatar-wrap">
-              <img className="avatar" src={process.env.PUBLIC_URL + "/images/varsha.jpeg"} alt="Varsha" />
-            </div>
-            <div className="card-content">
-              <h3 className="card-title center">Varsha Kumari</h3>
-              <h5 className="center">SVP, Operations</h5>
-              <p>Responsible for oversight of collection, disposal and landfill operations.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== Parallax 3 ===== */}
-      <div className="parallax-container">
-        <div className="parallax">
-          <img src={process.env.PUBLIC_URL + "/images/water.jpg"} alt="parallax-3" />
-        </div>
+    <div className="card hoverable">
+      <div className="card-image avatar-wrap">
+        <img
+          className="avatar"
+          src="https://th.bing.com/th/id/R.a379d7d9e2d1a4a762017ff4df8ae098?rik=hbo6t45NijUpVw&riu=http%3a%2f%2fwww.enterpriseappstoday.com%2fwp-content%2fuploads%2f2023%2f03%2fSmart-Waste-Collection-Market.jpg&ehk=w43QWgx0xWTHazn4zBFr1SdnDy0LKVYqAVEds8tSLXM%3d&risl=&pid=ImgRaw&r=0"
+          alt="Waste Collection"
+        />
       </div>
+      <div className="card-content">
+        <h3 className="card-title center">Smart Waste Collection</h3>
+        <h5 className="center">Door-to-door pickup</h5>
+        <p>We ensure timely waste pickup from homes and commercial areas to maintain cleanliness.</p>
+      </div>
+    </div>
 
-      {/* ===== Supporting Companies ===== */}
-      <section className="section container-xxl py-5">
-        <h2 className="section-title">Our Supporting Companies</h2>
-        <div className="logos-grid">
-          <img src={process.env.PUBLIC_URL + "/images/shayna.jpg"} alt="shayna" />
-          <img src={process.env.PUBLIC_URL + "/images/greenotech.jpg"} alt="greenotech" />
-          <img src={process.env.PUBLIC_URL + "/images/vanshika.png"} alt="vanshika" />
-          <img src={process.env.PUBLIC_URL + "/images/atterologo.jpg"} alt="attero" />
-        </div>
-      </section>
+    <div className="card hoverable">
+      <div className="card-image avatar-wrap">
+        <img
+          className="avatar"
+          src="https://transco.net/wp-content/uploads/2020/11/Eco-Commitment-Transco-1024x683.png"
+          alt="Recycling"
+        />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title center">Segregation & Recycling</h3>
+        <h5 className="center">Reduce • Reuse • Recycle</h5>
+        <p>Waste is separated into biodegradable and recyclable materials to reduce landfill load.</p>
+      </div>
+    </div>
+
+    <div className="card hoverable">
+      <div className="card-image avatar-wrap">
+        <img
+          className="avatar"
+          src="https://img.freepik.com/premium-vector/compost-life-circle-infographic-composting-process-recycling-organic-waste_281155-553.jpg?w=900"
+          alt="Composting"
+        />
+      </div>
+      <div className="card-content">
+        <h3 className="card-title center">Organic Composting</h3>
+        <h5 className="center">Waste to Resource</h5>
+        <p>Biodegradable waste is converted into natural compost that supports farming and gardening.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
       {/* ===== Latest News ===== */}
       <section className="section container-xxl py-5">

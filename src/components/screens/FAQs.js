@@ -13,7 +13,7 @@ const FAQs = () => {
   return (
     <div>
       <div style={{ width: "1300px", height: "250px", color: "white", marginBottom: "95px", marginTop: "40px" }}>
-        <img style={{ width: "1300px" }} src={process.env.PUBLIC_URL + "/images/faq.jpeg"} />
+        <img style={{ width: "1300px" }} src="https://tse2.mm.bing.net/th/id/OIP.yZNIoqR6WxtP5HrphCIvBAHaEJ?rs=1&pid=ImgDetMain&o=7&rm=3" />
       </div>
       <ul class="collapsible" style={{ marginBottom: "80px", marginTop: "200px" }}>
         <li>
